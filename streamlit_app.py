@@ -33,3 +33,36 @@ with tab1:
 with tab2:
   st.header("Test Logs")
   st.write("Add something here... files or logs or whatever")
+
+
+import streamlit as st
+import pandas as pd
+import io
+
+# Function to modify the dataframe
+def modify_dataframe(df):
+    # Example operation: Adding a new column
+    df['New Column'] = 'Example Data'
+    return df
+
+# File uploader widget
+uploaded_file = st.file_uploader("Upload a CSV", type="csv")
+if uploaded_file is not None:
+    # Read the uploaded CSV file
+    data = pd.read_csv(uploaded_file)
+
+    # Perform operations on the data
+    modified_data = modify_dataframe(data)
+
+    # Show the modified data
+    st.write("Modified DataFrame:")
+    st.dataframe(modified_data)
+
+    # Convert DataFrame to CSV and offer it for download
+    towrite = io.BytesIO()
+    modified_data.to_csv(towrite, encoding='utf-8', index=False)
+    towrite.seek(0)  # reset pointer
+    b64 = base64.b64encode(towrite.read()).decode()  # some strings <-> bytes conversions necessary here
+    href = f'<a href="data:file/csv;base64,{b64}" download="modified_file.csv">Download CSV File</a>'
+    st.markdown(href, unsafe_allow_html=True)
+
