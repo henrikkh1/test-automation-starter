@@ -38,6 +38,7 @@ with tab2:
 import streamlit as st
 import pandas as pd
 import io
+import base64  # Import the base64 module
 
 # Function to modify the dataframe
 def modify_dataframe(df):
@@ -65,4 +66,3 @@ if uploaded_file is not None:
     b64 = base64.b64encode(towrite.read()).decode()  # some strings <-> bytes conversions necessary here
     href = f'<a href="data:file/csv;base64,{b64}" download="modified_file.csv">Download CSV File</a>'
     st.markdown(href, unsafe_allow_html=True)
-
