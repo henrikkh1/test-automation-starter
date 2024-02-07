@@ -20,3 +20,16 @@ with st.form('my_form'):
 
 
 st.sidebar.file_uploader("Upload Test Scripts", type=[".py"])
+
+
+tab1, tab2 = st.tabs(["Test Results", "Logs"])
+
+# Tab 1 - Test Results
+with tab1:
+  st.header("Real-time test results")
+  # Add your results here
+  st.write("Add your results here or files")
+
+with tab2:
+  st.header("Test Logs")
+  st.write("Add something here... files or logs or whatever")
