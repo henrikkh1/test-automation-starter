@@ -19,4 +19,4 @@ with st.form('my_form'):
 
 
 
-st.sidebar.file_uploader("Upload Test Scripts", type=[.py])
+st.sidebar.file_uploader("Upload Test Scripts", type=[".py"])
