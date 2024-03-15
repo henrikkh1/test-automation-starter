@@ -16,7 +16,3 @@ with st.form('my_form'):
     st.warning('Please enter your OpenAI API key!', icon='⚠')
   if submitted and openai_api_key.startswith('sk-'):
     generate_response(text)
-
-st.markdown("[Streamlit Cheat Sheet](https://docs.streamlit.io/library/cheatsheet)")
-
-st.sidebar.file_uploader("Upload Test Scripts", type=[".py"])
